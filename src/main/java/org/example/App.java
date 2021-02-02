@@ -6,27 +6,13 @@ package org.example;
  */
 public class App 
 {
-    public static void main( String[] args ) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
+
         final StateMachine machine = new StateMachine();
 
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                machine.submitWork("sadasd");
-            }
-        });
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                machine.submitWork("sadasd");
-            }
-        });
-        Thread thread3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                machine.submitWork("sadasd");
-            }
-        });
+        Thread thread1 = new Thread(() -> machine.submitWork("Work1"));
+        Thread thread2 = new Thread(() -> machine.submitWork("Work2"));
+        Thread thread3 = new Thread(() -> machine.submitWork("Work3"));
 
         thread1.start();
         thread2.start();
