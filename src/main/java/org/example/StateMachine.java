@@ -19,7 +19,7 @@ public class StateMachine {
 				.getResourceAsStream("logging.properties")) {
 			LogManager.getLogManager().readConfiguration(loggingInputStream);
 			log = Logger.getLogger(StateMachine.class.getName());
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -29,7 +29,6 @@ public class StateMachine {
 	private final Lock lock;
 	private long workDuration;
 	private long sendDuration;
-
 
 
 	public StateMachine() {
@@ -103,7 +102,7 @@ public class StateMachine {
 			String result = inputData + " - data modified";
 			return new ResultContainer(result, true);
 		} catch (InterruptedException e) {
-			log.log(Level.SEVERE,"an exception was thrown", e);
+			log.log(Level.SEVERE, "an exception was thrown", e);
 			return new ResultContainer(inputData, false);
 		}
 
@@ -116,7 +115,7 @@ public class StateMachine {
 			Thread.sleep(sendDuration);
 			return new ResultContainer(result, true);
 		} catch (InterruptedException e) {
-			log.log(Level.SEVERE,"an exception was thrown", e);
+			log.log(Level.SEVERE, "an exception was thrown", e);
 			return new ResultContainer(result, false);
 		}
 	}
