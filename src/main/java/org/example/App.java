@@ -10,9 +10,9 @@ public class App
 
         final StateMachine machine = new StateMachine();
 
-        Thread thread1 = new Thread(() -> machine.submitWork("Work1"));
-        Thread thread2 = new Thread(() -> machine.submitWork("Work2"));
-        Thread thread3 = new Thread(() -> machine.submitWork("Work3"));
+        Thread thread1 = new Thread(() -> System.out.println(machine.submitWork("Work1")));
+        Thread thread2 = new Thread(() -> System.out.println(machine.submitWork("Work2")));
+        Thread thread3 = new Thread(() -> System.out.println(machine.submitWork("Work3")));
 
         thread1.start();
         thread2.start();
