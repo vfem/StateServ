@@ -15,7 +15,8 @@ public class StateMachine {
 	private static Logger log;
 
 	static {
-		try (InputStream loggingInputStream = StateMachine.class.getClassLoader().getResourceAsStream("logging.properties")) {
+		try (InputStream loggingInputStream = StateMachine.class.getClassLoader()
+				.getResourceAsStream("logging.properties")) {
 			LogManager.getLogManager().readConfiguration(loggingInputStream);
 			log = Logger.getLogger(StateMachine.class.getName());
 		}catch (Exception e){
@@ -44,7 +45,8 @@ public class StateMachine {
 			}
 			workDuration = Long.parseLong(prop.getProperty("work.duration", "2")) * 1000;
 			sendDuration = Long.parseLong(prop.getProperty("send.duration", "1")) * 1000;
-			log.log(Level.INFO, String.format("workDuration setted to %dms and sendDuration setted to %dms", workDuration, sendDuration));
+			log.log(Level.INFO, String.format("workDuration setted to %dms and sendDuration setted to %dms",
+					workDuration, sendDuration));
 		} catch (IOException e) {
 			log.log(Level.SEVERE, "an exception was thrown", e);
 			workDuration = 2000;
